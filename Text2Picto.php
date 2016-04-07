@@ -29,6 +29,10 @@ require_once("errors.php");
  * The url where the Text2Picto service is hosted.
  */
 define("TEXT2PICTO", "http://picto.ccl.kuleuven.be/picto_json2.php");
+/**
+ * The url where the Parallel Text2Picto service is hosted.
+ */
+define("PARALLEL", "http://picto.ccl.kuleuven.be/picto_parallel_JSON.php");
 
 // Instantiate the object Able
 $able = new Able();
@@ -55,9 +59,23 @@ if (isset($_GET['text']) && strlen(trim($_GET['text'])) > 0) {
           if (strcmp($language, "dutch") == 0) {
             $language = "cornetto";
           }
-          // Prepares an HTTP request using CURL to the Text2Picto service
+          // Assign the service address (Text2Picto or Parallel Text2Picto)
+          $text2pictoUri = TEXT2PICTO;
+          if (isset($_GET['parallel'])) {
+            $parallel = $_GET['parallel'];
+            switch($parallel) {
+              case "true":
+                $text2pictoUri = PARALLEL;
+                break;
+              case "false":
+                break;
+              default:
+                $able->setStatus(PARALLEL_MUST_BE_TRUE_OR_FALSE);
+            }
+          }
+          // Prepares an HTTP request using CURL to the selected Text2Picto service
           $handler = curl_init();
-          curl_setopt($handler, CURLOPT_URL, TEXT2PICTO);
+          curl_setopt($handler, CURLOPT_URL, $text2pictoUri);
           curl_setopt($handler, CURLOPT_POST,true);
           curl_setopt($handler, CURLOPT_POSTFIELDS, "input=".$text."&language=".$language."&picto=".$type);
           curl_setopt($handler, CURLOPT_HTTPHEADER, array('Content-Type: application/x-www-form-urlencoded'));

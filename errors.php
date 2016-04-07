@@ -66,4 +66,8 @@ define("LANGUAGE_NOT_SUPPORTED", 458);
  * The type is not supported. Must be "beta" or "sclera".
  */
 define("TYPE_NOT_SUPPORTED", 459);
+/**
+ * The parallel parameter must be "true" or "false".
+ */
+define("PARALLEL_MUST_BE_TRUE_OR_FALSE",460);
 ?>
