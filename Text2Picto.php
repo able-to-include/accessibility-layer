@@ -24,15 +24,7 @@ header("Access-Control-Allow-Origin: *");
 
 require_once("Able.php");
 require_once("errors.php");
-
-/**
- * The url where the Text2Picto service is hosted.
- */
-define("TEXT2PICTO", "http://picto.ccl.kuleuven.be/picto_json2.php");
-/**
- * The url where the Parallel Text2Picto service is hosted.
- */
-define("PARALLEL", "http://picto.ccl.kuleuven.be/picto_parallel_JSON.php");
+require_once("settings.php");
 
 // Instantiate the object Able
 $able = new Able();

@@ -24,15 +24,7 @@ header("Access-Control-Allow-Origin: *");
 
 require_once("Able.php");
 require_once("errors.php");
-
-/**
- * The url where the Spanish Simplext service is hosted.
- */
-define("SIMPLEXT_SPANISH", "http://simplext.net/simple-api/api/plain/");
-/**
- * The url where the English Simplext service is hosted.
- */
-define("SIMPLEXT_ENGLISH", "http://5.56.57.123:1919");
+require_once("settings.php");
 
 // Instantiate the object Able
 $able = new Able();

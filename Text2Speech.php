@@ -24,11 +24,7 @@ header("Access-Control-Allow-Origin: *");
 
 require_once("Able.php");
 require_once("errors.php");
-
-/**
- * The url where the Text2Speech service is hosted.
- */
-define("TEXT2SPEECH", "http://able2include.teamnet.ro:8090/api/TTS/Post");
+require_once("settings.php");
 
 /**
  * Gets the speech from the Text2Speech service.
