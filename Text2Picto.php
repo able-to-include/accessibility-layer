@@ -25,6 +25,7 @@ header("Access-Control-Allow-Origin: *");
 require_once("Able.php");
 require_once("errors.php");
 require_once("settings.php");
+require_once("arasaac.php");
 
 // Instantiate the object Able
 $able = new Able();
@@ -44,7 +45,25 @@ if (isset($_GET['text']) && strlen(trim($_GET['text'])) > 0) {
       } else {
         //Language is supported
         if (strcmp($type, "beta") != 0 && strcmp($type, "sclera") != 0) {
-          $able->setStatus(TYPE_NOT_SUPPORTED);
+          if (strcmp($type, "arasaac") == 0 && (strcmp($language, "spanish") == 0 || strcmp($language, "english") == 0)) {
+
+            $array_response = NULL;
+            if (isset($_GET["parallel"])) {
+              $parallel = $_GET["parallel"];
+              if (strcmp($parallel, "true") == 0) {
+                $array_response = arasaacParallel($text, $language);
+              } else {
+                $array_response = arasaacNotParallel($text, $language);
+              }
+            } else {
+              $array_response = arasaacNotParallel($text, $language);
+            }
+
+            $able->setPictos($array_response);
+
+          } else {
+            $able->setStatus(TYPE_NOT_SUPPORTED);
+          }
         } else {
           // Checks if the language is "dutch" because this service is using
           // a kind of "dutch" language called "cornetto"
