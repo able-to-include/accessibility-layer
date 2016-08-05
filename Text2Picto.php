@@ -84,22 +84,24 @@ if (isset($_GET['text']) && strlen(trim($_GET['text'])) > 0) {
                 $able->setStatus(PARALLEL_MUST_BE_TRUE_OR_FALSE);
             }
           }
-          // Prepares an HTTP request using CURL to the selected Text2Picto service
-          $handler = curl_init();
-          curl_setopt($handler, CURLOPT_URL, $text2pictoUri);
-          curl_setopt($handler, CURLOPT_POST,true);
-          curl_setopt($handler, CURLOPT_POSTFIELDS, "input=".$text."&language=".$language."&picto=".$type);
-          curl_setopt($handler, CURLOPT_HTTPHEADER, array('Content-Type: application/x-www-form-urlencoded'));
-          curl_setopt($handler, CURLOPT_RETURNTRANSFER, 1);
-          // Send the request to the Text2Picto service
-          $response = curl_exec ($handler);
-          curl_close($handler);
-          if ($response != NULL || strlen($response) < 1) {
-            $array_response = json_decode($response, true);
-            $able->setPictos($array_response['output']);
-            $able->setStatus(OK);
-          } else {
-            $able->setStatus(SERVICE_NOT_WORKING);
+          if (strcmp($type, "arasaac") != 0) {
+            // Prepares an HTTP request using CURL to the selected Text2Picto service
+            $handler = curl_init();
+            curl_setopt($handler, CURLOPT_URL, $text2pictoUri);
+            curl_setopt($handler, CURLOPT_POST,true);
+            curl_setopt($handler, CURLOPT_POSTFIELDS, "input=".$text."&language=".$language."&picto=".$type);
+            curl_setopt($handler, CURLOPT_HTTPHEADER, array('Content-Type: application/x-www-form-urlencoded'));
+            curl_setopt($handler, CURLOPT_RETURNTRANSFER, 1);
+            // Send the request to the Text2Picto service
+            $response = curl_exec ($handler);
+            curl_close($handler);
+            if ($response != NULL || strlen($response) < 1) {
+              $array_response = json_decode($response, true);
+              $able->setPictos($array_response['output']);
+              $able->setStatus(OK);
+            } else {
+              $able->setStatus(SERVICE_NOT_WORKING);
+            }
           }
         }
       }
