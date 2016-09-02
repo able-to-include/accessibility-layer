@@ -36,6 +36,10 @@ class Able {
    */
   var $pictos = array();
   /**
+   * The text obtained from the pictogram list (using Picto2Text).
+   */
+  var $textFromPictos = "";
+  /**
    * The url to the audio speech (using Text2Speech).
    */
   var $audioSpeech = "";
@@ -85,6 +89,20 @@ class Able {
    */
   function setPictos($var) {
     $this->pictos = $var;
+  }
+
+  /**
+   * Gets the text translated from the pictogram list.
+   */
+  function getTextFromPictos() {
+    return $this->textFromPictos;
+  }
+
+  /**
+   * Sets the text translated from the pictogram list.
+   */
+  function setTextFromPictos($var) {
+    $this->textFromPictos = $var;
   }
 
   /**

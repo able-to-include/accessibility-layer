@@ -30,11 +30,16 @@ define("SIMPLEXT_SPANISH", "http://simplext.net/simple-api/api/plain/");
  */
 define("SIMPLEXT_ENGLISH", "http://5.56.57.123:1919");
 
-// Text2Picto
+// Text2Picto & Picto2Text
 /**
  * The url where the Text2Picto service is hosted.
  */
 define("TEXT2PICTO", "http://picto.ccl.kuleuven.be/picto_json2.php");
+/**
+ * The url where the Picto2Text service is hosted.
+ */
+define("PICTO2TEXT", "http://picto.ccl.kuleuven.be/pictototext.php");
+
 /**
  * The url where the Parallel Text2Picto service is hosted.
  */
