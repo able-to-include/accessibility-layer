@@ -3,6 +3,18 @@ A context-aware accessibility layer that, by being integrated with existing and 
 
 This API is public and can be used as it is explained at the <a href="http://al.abletoinclude.eu/doc/">ABLE Accessibility Layer Documentation</a>.
 
+Users of the Able to Include services, including the Accessibility Layer API, should note they are covered by the following FRAND policy adopted by their Service Providers.
+Third-party beneficiaries of the Able to Include FRAND policy, are entitled to expect that each Able to Include Service:
+Is provided and used only on an "As Is" basis, without warranties or conditions of any kind, either express or implied, unless required by applicable law or agreed to in writing.
+Will continue to be thus provided for at least 2 years after the Able to Include project ends.
+Is provided on a fair, reasonable and non-discriminatory basis to all users who wish to use it. 
+The service is available free for Partners’ research, training and private use. 
+Commercial and external research users’ fees for use of the service will be based on rates that:
+Provide the Service Provider with an adequate incentive to be able to continue investing and contributing to the service in future time periods.
+Are based on a common approach, 
+Are not anti-competitive and are reasonable even if no other alternative similar service exists.
+Documentation, support and communications with the Service Provider is through http://Able-to-Include.com only.
+
 ## License
 
 <license>
